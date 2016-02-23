@@ -1,2 +1,3 @@
-# atom-scroll-percentage
-A package to display the current vertical scroll percentage in the status bar 
+# Atom Scroll Percentage
+
+A tiny package that tracks your current scroll percentage in the window, similar to Vim.
