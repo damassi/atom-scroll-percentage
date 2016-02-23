@@ -8,7 +8,7 @@ module.exports = ScrollPercentage =
 
   consumeStatusBar: (statusBar) ->
     scrollLabel = document.createElement 'span'
-    scrollLabel.textContent = '0%'
+    scrollLabel.textContent = @formatLabel 0
     scrollLabel.className = 'scroll-percentage';
 
     @statusBarTile = statusBar.addRightTile
@@ -19,123 +19,15 @@ module.exports = ScrollPercentage =
       editor = atom.workspace.getActiveTextEditor()
 
       if editor
-        editor.onDidChangeScrollTop (scrollTop) ->
+        editor.onDidChangeScrollTop (scrollTop) =>
           scrollHeight = editor.getScrollHeight()
           totalHeight  = editor.getHeight()
-          pct = Math.round(scrollTop / (scrollHeight - totalHeight) * 100)
+          pct = 0
 
-          scrollLabel.textContent = pct + '%'
+          if scrollHeight != totalHeight
+            pct = Math.round scrollTop / (scrollHeight - totalHeight) * 100
 
+          scrollLabel.textContent = @formatLabel pct
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-# hi
+  formatLabel: (pct) ->
+    pct + '%'
