@@ -1,7 +1,7 @@
 {
   "name": "scroll-percentage",
   "main": "./lib/scroll-percentage",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "A tiny status bar package that tracks your scroll percentage, similar to Vim",
   "author": "Christopher Pappas <damassi.pappas@gmail.com>",
   "keywords": [
@@ -21,6 +21,5 @@
   "engines": {
     "atom": ">=1.0.0 <2.0.0"
   },
-  "dependencies": {
-  }
+  "dependencies": {}
 }
