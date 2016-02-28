@@ -8,10 +8,10 @@ module.exports = ScrollPercentage =
 
   consumeStatusBar: (statusBar) ->
     scrollLabel = document.createElement 'span'
-    scrollLabel.className = 'scroll-percentage';
+    scrollLabel.id = 'scroll-percentage';
     scrollLabel.textContent = @formatLabel 0
 
-    @statusBarTile = statusBar.addRightTile
+    @statusBarTile = statusBar.addLeftTile
       item: scrollLabel
       priority: 100
 
@@ -26,6 +26,9 @@ module.exports = ScrollPercentage =
 
           if scrollHeight != totalHeight
             pct = Math.round scrollTop / (scrollHeight - totalHeight) * 100
+
+            if pct > 100 then pct = 100
+            if pct < 0   then pct = 0
 
           scrollLabel.textContent = @formatLabel pct
 
