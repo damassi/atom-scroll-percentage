@@ -22,10 +22,11 @@ module.exports = ScrollPercentage =
       editor = atom.workspace.getActiveTextEditor()
 
       if editor
+        element = editor.getElement()
 
-        editor.onDidChangeScrollTop (scrollTop) =>
-          scrollHeight = editor.getScrollHeight()
-          viewportHeight  = editor.getHeight()
+        element.onDidChangeScrollTop (scrollTop) =>
+          scrollHeight = element.getScrollHeight()
+          viewportHeight = element.getHeight()
 
           if scrollHeight != viewportHeight
             pct = Math.round scrollTop / (scrollHeight - viewportHeight) * 100
